@@ -1,0 +1,18 @@
+diff -Naur libosip-0.9.7.orig/acinclude.m4 libosip-0.9.7/acinclude.m4
+--- libosip-0.9.7.orig/acinclude.m4	Thu Jun 26 18:05:38 2003
++++ libosip-0.9.7/acinclude.m4	Thu Jun 26 18:11:56 2003
+@@ -3395,3 +3395,14 @@
+ 
+ # This is just to silence aclocal about the macro not being used
+ ifelse([AC_DISABLE_FAST_INSTALL])
++
++dnl AM_ACLOCAL_INCLUDE(macrodir)
++AC_DEFUN([AM_ACLOCAL_INCLUDE],
++[
++        AM_CONDITIONAL(INSIDE_GNOME_COMMON, false)
++
++        test -n "$ACLOCAL_FLAGS" && ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
++
++        for k in $1 ; do ACLOCAL="$ACLOCAL -I $k" ; done
++])
++

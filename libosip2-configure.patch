@@ -1,0 +1,10 @@
+--- libosip2-2.0.1/configure.in.fix	2003-07-01 00:04:03.000000000 +0200
++++ libosip2-2.0.1/configure.in	2003-07-01 00:04:36.000000000 +0200
+@@ -207,6 +207,5 @@
+ help/doxygen/Makefile
+ platform/Makefile
+ platform/rpm/Makefile
+-platform/windows/Makefile
+-debian/Makefile)
++platform/windows/Makefile)
+ 
