@@ -1,23 +1,20 @@
 Summary:	The GNU oSIP library
 Summary(pl):	Biblioteka GNU oSIP
 Name:		libosip2
-Version:	2.0.1
-Release:	2
+Version:	2.0.5
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
-# Source0-md5:	8d635913658b40df2bef70070128884a
-Patch0:		%{name}-configure.patch
-Patch1:		%{name}-automake.patch
-Patch2:		%{name}-nolibs.patch
+# Source0-md5:	b78593a76351a266b81606a9bf6f76af
+Patch0:		%{name}-nolibs.patch
 URL:		http://www.fsf.org/software/osip/osip.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool >= 1:1.4.3
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoletes:	libosip
 Provides:	libosip
-
+Obsoletes:	libosip
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is "the GNU oSIP library" (for Omnibus SIP). It has been designed
@@ -34,9 +31,9 @@ Protokó³ SIP (Session Initiation Protocol) jest opisany w RFC2543.
 Summary:	The GNU oSIP library - development files
 Summary(pl):	Pliki dla programistów u¿ywaj±cych GNU oSIP
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
-Obsoletes:	libosip-devel
+Requires:	%{name} = %{version}-%{release}
 Provides:	libosip-devel
+Obsoletes:	libosip-devel
 
 %description devel
 Development files for the GNU oSIP library.
@@ -48,9 +45,9 @@ Pliki dla programistów u¿ywaj±cych biblioteki GNU oSIP.
 Summary:	The GNU oSIP library - static version
 Summary(pl):	Statyczna biblioteka GNU oSIP
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
-Obsoletes:	libosip-static
+Requires:	%{name}-devel = %{version}-%{release}
 Provides:	libosip-static
+Obsoletes:	libosip-static
 
 %description static
 Static version of the GNU oSIP library.
@@ -61,13 +58,12 @@ Statyczna wersja biblioteki GNU oSIP.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
+
+rm -f acinclude.m4
 
 %build
-rm -f scripts/missing
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I scripts
 %{__autoconf}
 %{__automake}
 %configure \
@@ -101,7 +97,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_includedir}/*
+%{_includedir}/osip2
+%{_includedir}/osipparser2
 %{_mandir}/man3/*.3*
 
 %files static
