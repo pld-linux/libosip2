@@ -1,15 +1,17 @@
---- libosip-0.9.7/configure.in.orig	Sun Apr 27 16:55:00 2003
-+++ libosip-0.9.7/configure.in	Mon Jun 30 15:54:43 2003
-@@ -166,9 +166,9 @@
+--- libosip2-2.2.0/configure.in.orig	2005-01-31 16:44:06.000000000 +0100
++++ libosip2-2.2.0/configure.in	2005-02-27 20:30:16.277563216 +0100
+@@ -170,10 +170,10 @@
  fi
  
  dnl Checks for libraries. (those one are needed for sun)
 -AC_CHECK_LIB(posix4,sem_open,[FSM_LIB="$FSM_LIB -lposix4 -mt"])
 -AC_CHECK_LIB(nsl,nis_add,[FSM_LIB="$FSM_LIB -lnsl"])
 -AC_CHECK_LIB(socket,sendto,[FSM_LIB="$FSM_LIB -lsocket"])
+-AC_CHECK_LIB(c, lrand48, AC_DEFINE([HAVE_LRAND48], [], [Defined if you have lrand48]))
 +AC_CHECK_FUNC(sem_open, , [AC_CHECK_LIB(posix4,sem_open,[FSM_LIB="$FSM_LIB -lposix4 -mt"])])
-+AC_CHECK_FUNC(gethostbyname, , [AC_CHECK_LIB(nsl,nis_add,[FSM_LIB="$FSM_LIB -lnsl"])])dnl nsl not used
++AC_CHECK_FUNC(gethostbyname, , [AC_CHECK_LIB(nsl,nis_add,[FSM_LIB="$FSM_LIB -lnsl"])])
 +AC_CHECK_FUNC(sendto, , [AC_CHECK_LIB(socket,sendto,[FSM_LIB="$FSM_LIB -lsocket"])])
++AC_CHECK_LIB(c, lrand48, [AC_DEFINE([HAVE_LRAND48], [], [Defined if you have lrand48])])
  
- SIP_CFLAGS="$SIP_CFLAGS $CFLAGS"
- 
+ AC_CACHE_CHECK([whether -Wall works], Wall_flag, [
+   saved_CPPFLAGS=$CPPFLAGS
