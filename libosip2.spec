@@ -1,5 +1,5 @@
 Summary:	The GNU oSIP library
-Summary(pl):	Biblioteka GNU oSIP
+Summary(pl.UTF-8):   Biblioteka GNU oSIP
 Name:		libosip2
 Version:	2.2.2
 Release:	1
@@ -22,14 +22,14 @@ to provide the Internet Community a simple way to support the Session
 Initiation Protocol. SIP is described in the RFC2543 which is
 available at http://www.ietf.org/rfc/rfc2543.txt.
 
-%description -l pl
-To jest biblioteka GNU oSIP (Omnibus SIP). Zosta³a zaprojektowana, aby
-dostarczyæ Spo³eczno¶ci Internetowej prost± obs³ugê protoko³u SIP.
-Protokó³ SIP (Session Initiation Protocol) jest opisany w RFC2543.
+%description -l pl.UTF-8
+To jest biblioteka GNU oSIP (Omnibus SIP). ZostaÅ‚a zaprojektowana, aby
+dostarczyÄ‡ SpoÅ‚ecznoÅ›ci Internetowej prostÄ… obsÅ‚ugÄ™ protokoÅ‚u SIP.
+ProtokÃ³Å‚ SIP (Session Initiation Protocol) jest opisany w RFC2543.
 
 %package devel
 Summary:	The GNU oSIP library - development files
-Summary(pl):	Pliki dla programistów u¿ywaj±cych GNU oSIP
+Summary(pl.UTF-8):   Pliki dla programistÃ³w uÅ¼ywajÄ…cych GNU oSIP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Provides:	libosip-devel
@@ -38,12 +38,12 @@ Obsoletes:	libosip-devel
 %description devel
 Development files for the GNU oSIP library.
 
-%description devel -l pl
-Pliki dla programistów u¿ywaj±cych biblioteki GNU oSIP.
+%description devel -l pl.UTF-8
+Pliki dla programistÃ³w uÅ¼ywajÄ…cych biblioteki GNU oSIP.
 
 %package static
 Summary:	The GNU oSIP library - static version
-Summary(pl):	Statyczna biblioteka GNU oSIP
+Summary(pl.UTF-8):   Statyczna biblioteka GNU oSIP
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Provides:	libosip-static
@@ -52,7 +52,7 @@ Obsoletes:	libosip-static
 %description static
 Static version of the GNU oSIP library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja biblioteki GNU oSIP.
 
 %prep
