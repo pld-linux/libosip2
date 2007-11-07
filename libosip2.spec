@@ -1,14 +1,14 @@
 Summary:	The GNU oSIP library
 Summary(pl.UTF-8):	Biblioteka GNU oSIP
 Name:		libosip2
-Version:	2.2.2
+Version:	3.0.3
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
-# Source0-md5:	40ee3ec89030f0d6dfdb2cf6100e6685
+# Source0-md5:	f90ae77075fbd8693af7c78998fcf151
 Patch0:		%{name}-nolibs.patch
-URL:		http://www.fsf.org/software/osip/osip.html
+URL:		http://www.gnu.org/software/osip/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool >= 1:1.4.3
