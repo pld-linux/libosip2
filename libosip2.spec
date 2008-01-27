@@ -3,13 +3,13 @@ Summary(pl.UTF-8):	Biblioteka GNU oSIP
 Name:		libosip2
 Version:	3.0.3
 Release:	1
-License:	LGPL
+License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
 # Source0-md5:	f90ae77075fbd8693af7c78998fcf151
 Patch0:		%{name}-nolibs.patch
 URL:		http://www.gnu.org/software/osip/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	libtool >= 1:1.4.3
 Provides:	libosip
@@ -91,17 +91,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog NEWS README TODO
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libosip2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libosip2.so.2
+%attr(755,root,root) %{_libdir}/libosipparser2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libosipparser2.so.2
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libosip2.so
+%attr(755,root,root) %{_libdir}/libosipparser2.so
+%{_libdir}/libosip2.la
+%{_libdir}/libosipparser2.la
 %{_includedir}/osip2
 %{_includedir}/osipparser2
 %{_pkgconfigdir}/libosip2.pc
-%{_mandir}/man3/*.3*
+%{_mandir}/man3/osip.3*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libosip2.a
+%{_libdir}/libosipparser2.a
