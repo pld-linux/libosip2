@@ -5,7 +5,7 @@ Version:	3.0.3
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	ftp://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
 # Source0-md5:	f90ae77075fbd8693af7c78998fcf151
 Patch0:		%{name}-nolibs.patch
 URL:		http://www.gnu.org/software/osip/
