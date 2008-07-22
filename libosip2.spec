@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static library
+#
 Summary:	The GNU oSIP library
 Summary(pl.UTF-8):	Biblioteka GNU oSIP
 Name:		libosip2
@@ -69,7 +73,8 @@ rm -f acinclude.m4
 %configure \
 	--enable-semaphore \
 	--enable-pthread \
-	--%{?debug:en}%{!?debug:dis}able-debug
+	--%{?debug:en}%{!?debug:dis}able-debug \
+	%{!?with_static_libs:--disable-static}
 
 %{__make}
 
@@ -107,7 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/libosip2.pc
 %{_mandir}/man3/osip.3*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libosip2.a
 %{_libdir}/libosipparser2.a
+%endif
