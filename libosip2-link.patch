@@ -1,0 +1,10 @@
+--- libosip2-3.6.0/src/osip2/Makefile.am.orig	2010-01-06 15:58:16.000000000 +0100
++++ libosip2-3.6.0/src/osip2/Makefile.am	2011-10-15 21:47:56.057797977 +0200
+@@ -13,6 +13,7 @@
+ libosip2_la_SOURCES+=port_sema.c port_thread.c port_condv.c
+ endif
+ 
++libosip2_la_LIBADD = -lpthread
+ libosip2_la_LDFLAGS = -version-info $(LIBOSIP_SO_VERSION) \
+  $(FSM_LIB) $(EXTRA_LIB) ../osipparser2/libosipparser2.la -no-undefined
+ 
