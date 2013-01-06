@@ -5,12 +5,12 @@
 Summary:	The GNU oSIP library
 Summary(pl.UTF-8):	Biblioteka GNU oSIP
 Name:		libosip2
-Version:	3.6.0
+Version:	4.0.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
-# Source0-md5:	92fd1c1698235a798497887db159c9b3
+# Source0-md5:	c6a2c175d39ce75c15026c5738732dab
 Patch0:		%{name}-nolibs.patch
 Patch1:		%{name}-link.patch
 URL:		http://www.gnu.org/software/osip/
@@ -97,9 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog FEATURES HISTORY NEWS README TODO
 %attr(755,root,root) %{_libdir}/libosip2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libosip2.so.7
+%attr(755,root,root) %ghost %{_libdir}/libosip2.so.10
 %attr(755,root,root) %{_libdir}/libosipparser2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libosipparser2.so.7
+%attr(755,root,root) %ghost %{_libdir}/libosipparser2.so.10
 
 %files devel
 %defattr(644,root,root,755)
