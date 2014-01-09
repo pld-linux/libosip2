@@ -1,17 +1,19 @@
---- libosip2-2.2.0/configure.in.orig	2005-01-31 16:44:06.000000000 +0100
-+++ libosip2-2.2.0/configure.in	2005-02-27 20:30:16.277563216 +0100
-@@ -170,10 +170,10 @@
- fi
+--- libosip2-4.1.0/configure.ac.orig	2014-01-09 21:41:08.039332227 +0100
++++ libosip2-4.1.0/configure.ac	2014-01-09 21:43:01.432660802 +0100
+@@ -211,11 +211,11 @@
+ AM_CONDITIONAL(BUILD_MAXSIZE, test x$enable_minisize = xno)
  
  dnl Checks for libraries. (those one are needed for sun)
 -AC_CHECK_LIB(posix4,sem_open,[FSM_LIB="$FSM_LIB -lposix4 -mt"])
 -AC_CHECK_LIB(nsl,nis_add,[FSM_LIB="$FSM_LIB -lnsl"])
 -AC_CHECK_LIB(socket,sendto,[FSM_LIB="$FSM_LIB -lsocket"])
 -AC_CHECK_LIB(c, lrand48, AC_DEFINE([HAVE_LRAND48], [], [Defined if you have lrand48]))
+-AC_CHECK_LIB(rt,clock_gettime,[FSM_LIB="$FSM_LIB -lrt"])
 +AC_CHECK_FUNC(sem_open, , [AC_CHECK_LIB(posix4,sem_open,[FSM_LIB="$FSM_LIB -lposix4 -mt"])])
 +AC_CHECK_FUNC(gethostbyname, , [AC_CHECK_LIB(nsl,nis_add,[FSM_LIB="$FSM_LIB -lnsl"])])
 +AC_CHECK_FUNC(sendto, , [AC_CHECK_LIB(socket,sendto,[FSM_LIB="$FSM_LIB -lsocket"])])
 +AC_CHECK_LIB(c, lrand48, [AC_DEFINE([HAVE_LRAND48], [], [Defined if you have lrand48])])
++AC_CHECK_FUNC(clock_gettime, , [AC_CHECK_LIB(rt,clock_gettime,[FSM_LIB="$FSM_LIB -lrt"])])
  
- AC_CACHE_CHECK([whether -Wall works], Wall_flag, [
+ AC_CACHE_CHECK([whether -Wall works], Wall_cv_flag, [
    saved_CPPFLAGS=$CPPFLAGS
