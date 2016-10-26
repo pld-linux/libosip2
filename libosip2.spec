@@ -5,18 +5,18 @@
 Summary:	The GNU oSIP library
 Summary(pl.UTF-8):	Biblioteka GNU oSIP
 Name:		libosip2
-Version:	4.1.0
+Version:	5.0.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
-# Source0-md5:	756423628683c07f817432f046a26516
+# Source0-md5:	5cb1aebecec58946fceb6c136a30d5e1
 Patch0:		%{name}-nolibs.patch
 Patch1:		%{name}-link.patch
 URL:		http://www.gnu.org/software/osip/
-BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake
-BuildRequires:	libtool >= 1:1.4.3
+BuildRequires:	libtool >= 2:2
 Provides:	libosip
 Obsoletes:	libosip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -69,6 +69,7 @@ Statyczna wersja biblioteki GNU oSIP.
 %{__libtoolize}
 %{__aclocal} -I scripts
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--enable-semaphore \
@@ -84,8 +85,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv -f $RPM_BUILD_ROOT%{_mandir}/man{1,3}
-mv -f $RPM_BUILD_ROOT%{_mandir}/man3/osip.{1,3}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libosip*.la
+
+%{__mv} $RPM_BUILD_ROOT%{_mandir}/man{1,3}
+%{__mv} $RPM_BUILD_ROOT%{_mandir}/man3/osip.{1,3}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -97,16 +100,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog FEATURES HISTORY NEWS README TODO
 %attr(755,root,root) %{_libdir}/libosip2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libosip2.so.11
+%attr(755,root,root) %ghost %{_libdir}/libosip2.so.12
 %attr(755,root,root) %{_libdir}/libosipparser2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libosipparser2.so.11
+%attr(755,root,root) %ghost %{_libdir}/libosipparser2.so.12
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libosip2.so
 %attr(755,root,root) %{_libdir}/libosipparser2.so
-%{_libdir}/libosip2.la
-%{_libdir}/libosipparser2.la
 %{_includedir}/osip2
 %{_includedir}/osipparser2
 %{_pkgconfigdir}/libosip2.pc
