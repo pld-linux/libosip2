@@ -5,14 +5,15 @@
 Summary:	The GNU oSIP library
 Summary(pl.UTF-8):	Biblioteka GNU oSIP
 Name:		libosip2
-Version:	5.1.0
+Version:	5.1.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	https://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
-# Source0-md5:	e69f625d0cc21fea946e08ffec51f2db
+# Source0-md5:	8527fb56a7414df0a04ca19f3cc6eadd
 Patch0:		%{name}-nolibs.patch
 Patch1:		%{name}-link.patch
+Patch2:		%{name}-soname.patch
 URL:		http://www.gnu.org/software/osip/
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake
@@ -64,6 +65,7 @@ Statyczna wersja biblioteki GNU oSIP.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -75,6 +77,7 @@ Statyczna wersja biblioteki GNU oSIP.
 	--enable-debug%{!?debug:=no} \
 	--enable-pthread \
 	--enable-semaphore \
+	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static}
 
 %{__make}
